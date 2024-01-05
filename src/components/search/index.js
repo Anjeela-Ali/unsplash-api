@@ -10,17 +10,22 @@ const SearchField = () => {
         const accessKey = process.env.REACT_APP_ACCESS_KEY;
         console.log('accessKey', accessKey)
         const data = await fetch(
-          `https://api.unsplash.com/search/photos?page=1&query=office&client_id=${accessKey}`
+            `https://api.unsplash.com/search/photos?page=1&query=office&client_id=${accessKey}`
         );
-        console.log('data',data)
+        console.log('data', data)
         const dataJ = await data.json();
         const result = dataJ.results;
-        console.log('result',result);
+        console.log('result', result);
         setRes(result);
-      };
-      useEffect(() => {
+    };
+    useEffect(() => {
         fetchRequest();
-      }, []);
+    }, []);
+
+    const Submit = () => {
+        fetchRequest();
+        setImg("");
+    };
     return (
         <>
 
@@ -33,9 +38,23 @@ const SearchField = () => {
                     onChange={(e) => setImg(e.target.value)}
 
                 />
-                <button className='border border-white mx-5 py-2 px-5 rounded focus: bg-white text-gray-900 '>
+                <button onClick={Submit} className='border border-white mx-5 py-2 px-5 rounded focus: bg-white text-gray-900 '>
                     Search
                 </button>
+            </div>
+
+            <div className="border p-5 flex flex-wrap justify-evenly">
+                {res.map((val) => {
+                    return (
+                        <>
+                            <img
+                                className="col-3 img-fluid img-thumbnail"
+                                src={val.urls.small}
+                                alt="val.alt_description"
+                            />
+                        </>
+                    );
+                })}
             </div>
 
         </>
