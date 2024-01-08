@@ -12,10 +12,8 @@ const SearchField = () => {
         const data = await fetch(
             `https://api.unsplash.com/search/photos?page=1&query=office&client_id=${accessKey}`
         );
-        console.log('data', data)
         const dataJ = await data.json();
         const result = dataJ.results;
-        console.log('result', result);
         setRes(result);
     };
     useEffect(() => {
@@ -43,15 +41,20 @@ const SearchField = () => {
                 </button>
             </div>
 
-            <div className="border p-5 flex flex-wrap justify-evenly">
+            <div className="border p-5 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-row-3 gap-5 justify-evenly">
                 {res.map((val) => {
                     return (
                         <>
-                            <img
-                                className="col-3 img-fluid img-thumbnail"
-                                src={val.urls.small}
-                                alt="val.alt_description"
-                            />
+                            <div className=' '>
+                                <img
+                                    className="col-3 img-fluid img-thumbnail"
+                                    src={val.urls.small}
+                                    alt="val.alt_description"
+                                    width='100%'
+                                />
+
+                            </div>
+
                         </>
                     );
                 })}
