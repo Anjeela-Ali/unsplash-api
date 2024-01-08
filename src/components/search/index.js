@@ -10,7 +10,7 @@ const SearchField = () => {
         const accessKey = process.env.REACT_APP_ACCESS_KEY;
         console.log('accessKey', accessKey)
         const data = await fetch(
-            `https://api.unsplash.com/search/photos?page=1&query=office&client_id=${accessKey}`
+            `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=${accessKey}`
         );
         const dataJ = await data.json();
         const result = dataJ.results;
@@ -22,7 +22,7 @@ const SearchField = () => {
 
     const Submit = () => {
         fetchRequest();
-        // setImg("");
+        setImg("");
     };
     return (
         <>
@@ -41,7 +41,7 @@ const SearchField = () => {
                 </button>
             </div>
 
-            <div className="border p-5 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-row-3 gap-5 justify-evenly">
+            <div className="border p-5 grid xl:grid-cols-3 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2 grid-rows-0 gap-5 justify-evenly">
                 {res.map((val) => {
                     return (
                         <>
