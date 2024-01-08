@@ -2,13 +2,13 @@ import React from 'react'
 import { useState, useEffect } from 'react'
 
 const SearchField = () => {
-    const [img, setImg] = useState("");
+    const [img, setImg] = useState("office");
     const [res, setRes] = useState([]);
  
     const fetchRequest = async () => {
         const accessKey = process.env.REACT_APP_ACCESS_KEY;
         const data = await fetch(
-            `https://api.unsplash.com/search/photos?page=1&query=office&client_id=${accessKey}`
+            `https://api.unsplash.com/search/photos?page=1&query=${img}&client_id=${accessKey}`
         );
         console.log('data', data)
         const dataJ = await data.json();
@@ -23,8 +23,13 @@ const SearchField = () => {
         // setImg('')
     }, [img]);
 
+    const handleInputChange = (e) => {
+        // e.preventDefault()
+        setImg(e.target.value);
+    };
+
     const Submit = () => {
-        fetchRequest();
+        fetchRequest(img);
     };
     return (
         <>
@@ -33,7 +38,8 @@ const SearchField = () => {
                     className=' border border-gray-300 text-black outline-none text-sm rounded py-2 px-3 focus: border border-gray-50'
                     type='input'
                     placeholder='Search anything ...'
-                    
+                    // value={img}
+                    onChange={handleInputChange}
 
                 />
                 <button onClick={Submit} className='border border-white mx-5 py-2 px-5 rounded focus: bg-white text-gray-900 '>
