@@ -22,7 +22,7 @@ const SearchField = () => {
 
     const Submit = () => {
         fetchRequest();
-        setImg("");
+        // setImg("");
     };
     return (
         <>
