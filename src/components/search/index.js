@@ -35,7 +35,7 @@ const SearchField = () => {
         <>
             <div className='my-4 text-center '>
                 <input
-                    className=' border border-gray-300 text-black outline-none text-sm rounded py-2 px-3 focus: border border-gray-50'
+                    className='border-gray-300 text-black outline-none text-sm rounded py-2 px-3 focus: border'
                     type='input'
                     placeholder='Search anything ...'
                     // value={img}
