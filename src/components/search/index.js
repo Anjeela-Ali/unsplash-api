@@ -21,7 +21,7 @@ const SearchField = () => {
         console.log('Useeffect is working')
         fetchRequest();
         // setImg('')
-    }, [img]);
+    }, []);
 
     const handleInputChange = (e) => {
         // e.preventDefault()
